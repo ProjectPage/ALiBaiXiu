@@ -1,0 +1,75 @@
+nav{
+    height: 100vh;width: 15%;background-color: rgb(20, 82, 110);float: left;
+}
+header{
+    width: 85%;height: 5vh;background-color: rgb(255, 255, 255);float: right;display: flex;
+    align-items: center;justify-content: space-between;padding: 0 10px;
+    box-sizing: border-box;
+}
+section{
+    width: 85%;height: 95vh;background-color: rgb(228, 228, 228);float: right;box-sizing: border-box;
+    padding: 15px;
+}
+/* 头部/ */
+header .list{
+    width: 28px;height: 24px;background-color: rgb(219, 219, 219);padding: 5px 0;box-sizing: border-box;
+}
+.list li{
+    height: 2px;background-color: teal;margin: 2px 5px;border-radius: 2px;
+}
+header .user_center a{
+    font-size: 12px;margin-left: 20px;color:rgb(16, 60, 100)
+}
+/* 导航 */
+nav .nav_list .nav_list_list a{
+    color: rgb(235, 235, 235);padding: 10px 20px;box-sizing: border-box;
+    font-size: 14px;display: block;
+}
+nav .nav_list li:first-child{
+    height:200px;background-color: rgb(19, 70, 104);box-sizing: border-box;
+    padding: 30px 0;margin-bottom: 10px;
+}
+.nav_list .portrait a{
+    display: block;width: 100px;height: 100px;border-radius: 50%;
+    background-color: chartreuse;margin: 0 auto 15px;
+}
+.portrait img{
+    vertical-align: top;
+}
+.nav_list .username a{
+    font-size: 16px;color: rgb(228, 228, 228);font-weight: 500;
+    display: block;text-align: center;
+}
+
+/* 主体 */
+/* 写文章 */
+section .write_text{
+    background-color: rgb(216, 216, 216);text-align: center;box-sizing: border-box;
+    padding: 60px 0;
+}
+.write_text h5{
+    font-size: 70px;font-weight: 500;
+}
+.write_text p{
+    font-size: 26px;margin: 23px 0 20px;
+}
+.write_text h4 a{
+    padding: 10px;background-color: rgb(41, 82, 136);display: inline-block;font-weight: 500;
+    border-radius: 4px;box-sizing: border-box;color: #fff;
+}
+/* 数据统计 */
+section .content_statistics{
+    width: 350px;background-color: cornsilk;border: 1px solid rgba(0, 0, 0, 0.164);
+    margin-top: 20px;
+}
+.content_statistics dt,
+.content_statistics dd a{
+    display: block;padding: 10px 8px;box-sizing: border-box;border-bottom: 1px solid rgba(0, 0, 0, 0.164);
+    font-size: 12px;background-color: rgb(233, 233, 233);color: #444;
+}
+.content_statistics dd:last-child a{
+    border: none;
+}
+.content_statistics dt{
+    background-color: rgb(218, 218, 218);
+}

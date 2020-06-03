@@ -1,0 +1,61 @@
+<script>
+    function isLogin(result){
+        if(!result){
+            location.href = '/admin/login'
+        }
+    }
+</script>
+<script src="http://localhost:3000/admin/statu?callback=isLogin"></script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理页面-阿里佰秀</title>
+    <meta name="description" content="阿里佰秀文章发布 文章管理">
+    <meta name="keywords" content="阿里佰秀文章发布 文章管理">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/common/css/common.css">
+    <link rel="stylesheet" href="/login/css/manage.css">
+    <link rel="stylesheet" href="/login/css/iconfont.css">
+</head>
+<body>
+    <header>
+        <ul class="list">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="user_center">
+            <a href="" class="iconfont icon-gerenzhongxin"> 个人中心</a>
+            <a href="" class="iconfont icon-tuichu_huaban1"> 退出</a>
+        </div>
+    </header>
+    <nav>
+        <ul class="nav_list">
+            <li>
+                <div class="portrait"><a href=""><img src=""></a></div>
+                <h5 class="username"><a href="">名字</a></h5>
+            </li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-ziyuan"> 仪表盘</a></li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-wenzhang"> 文章</a></li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-pinglun"> 评论</a></li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-yonghu"> 用户</a></li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-shezhi"> 设置</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="write_text">
+            <h5>One Belt,One Rand</h5>
+            <p>Thought dsksj sdk</p>
+            <h4><a href="">写文章</a></h4>
+        </div>
+        <dl class="content_statistics">
+            <dt>站点内容统计</dt>
+            <dd><a href="">10篇文章(2篇草稿)</a></dd>
+            <dd><a href="">10个分类</a></dd>
+            <dd><a href="">10条评论(2条待审核)</a></dd>
+        </dl>
+    </section>
+</body>
+</html>
