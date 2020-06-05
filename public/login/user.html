@@ -1,0 +1,174 @@
+<script>
+    function isLogin(result){
+        if(!result){
+            location.href = '/admin/login'
+        }
+    }
+</script>
+<script src="http://localhost:3000/admin/statu?callback=isLogin"></script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户页面-阿里佰秀</title>
+    <link rel="stylesheet" href="/common/css/common.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/login/css/iconfont.css">
+    <link rel="stylesheet" href="/login/css/user.css">
+</head>
+<body>
+    <header>
+        <ul class="list">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="user_center">
+            <a href="" class="iconfont icon-gerenzhongxin"> 个人中心</a>
+            <a href="javascript:;" class="iconfont icon-tuichu_huaban1 exit"> 退出</a>
+        </div>
+    </header>
+    <nav>
+        <script type="text/html" id="yonghu_xinxi">
+            <div class="portrait"><a href=""><img src="{{result.src_img}}" alt="头像"></a></div>
+            <h5 class="username"><a href="">{{result.Nickname}}</a></h5>
+        </script>
+        <ul class="nav_list">
+            <li>
+                <!-- <div class="portrait"><a href=""><img src=""></a></div>
+                <h5 class="username"><a href="">名字</a></h5> -->
+            </li>
+            <li class="nav_list_list"><a href="/admin/manage" class="iconfont icon-ziyuan"> 仪表盘</a></li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-wenzhang"> 文章</a></li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-pinglun"> 评论</a></li>
+            <li class="nav_list_list"><a href="/admin/user" class="iconfont icon-yonghu select_nav"> 用户</a></li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-shezhi"> 设置</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="user">用户</div>
+        <div class="user_left">
+            <div class="user_add_text">添加新用户</div>
+            <label for="user_touxiang">头像</label>
+            <div id="user_touxiang">
+                <input type="file" name="file" id="touxiang_file" >
+                <img src="/login/images//touxiang.jpg" alt="头像" class="touxiang_img">
+            </div>
+            <form id="user_form">
+                <div class="user_form_box">
+                    <label for="email">邮箱</label><br>
+                    <input type="email" name="email" id="email" placeholder="邮箱">
+                </div>
+                <div class="user_form_box">
+                    <label for="Nickname">昵称</label><br>
+                    <input type="text" name="Nickname" id="Nickname" placeholder="昵称"><br>
+                </div>
+                <div class="user_form_box">
+                    <label for="password">密码</label><br>
+                    <input type="password" name="password" id="password" placeholder="密码"><br>
+                </div>
+                <div class="user_form_box">
+                    <input type="radio" name="activation" id="activation_false" value="0"><label for="activation_false"> 不激活</label>
+                    <input type="radio" name="activation" id="activation_true" value="1"><label for="activation_true"> 激活</label><br>
+                </div>
+                <div class="user_form_box">
+                    <input type="radio" name="power" id="power_admin" value="admin"><label for="power_admin"> 超级管理员</label>
+                    <input type="radio" name="power" id="power_normal" value="normal"><label for="power_normal"> 普通用户</label><br>
+                </div>
+                <input type="hidden" name="src_img" value="" class="src_img">
+                <button class="user_add_btn" type="button">添加</button>
+            </form>
+        </div>
+        <div class="user_right">
+            <a href="javascript:;" class="many_delete dispalyNone">批量删除</a>
+            <table border="0" cellspacing="1" id="user_table">
+                <tr class="user_list_title">
+                    <td>
+                        <input type="checkbox" name="selectAll" id="selectAll">
+                    </td>
+                    <td>头像</td>
+                    <td>邮箱</td>
+                    <td>昵称</td>
+                    <td>状态</td>
+                    <td>权限</td>
+                    <td>操作</td>
+                </tr>
+                <script type="text/html" id="user_list">
+                    {{each result.userAll}}
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="select" id="select" value='{{@$value._id}}'>
+                            </td>
+                            <td>
+                                <div class="user_touxiang_table">
+                                    <img src="{{$value.src_img}}" alt="头像">
+                                </div>
+                            </td>
+                            <td>
+                                {{$value.email}}
+                            </td>
+                            <td>
+                                {{$value.Nickname}}
+                            </td>
+                            <td>
+                                {{$value.activation === '1'?"激活":"未激活"}}
+                            </td>
+                            <td>
+                                {{$value.power === 'admin'?"超级管理员":"普通用户"}}
+                            </td>
+                            <td>
+                                <a href="javascript:;" class="user_modify" data-id="{{@$value._id}}">编辑</a><a href="javascript:;" class="user_delete" data-id="{{@$value._id}}">删除</a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </script>
+            </table>
+        </div>
+    </section>
+    <input type="hidden" value="" id="user_email">
+<script type="text/html" id="user_form_template">
+    <div class="user_add_text">添加新用户</div>
+    <label for="user_touxiang">头像</label>
+    <div id="user_touxiang">
+        <input type="file" name="file" id="touxiang_file" >
+        {{if src_img === ''}}
+            <img src="/login/images/touxiang.jpg" alt="头像" class="touxiang_img">
+        {{else}}
+            <img src="{{src_img}}" alt="头像" class="touxiang_img">
+        {{/if}}
+    </div>
+    <form id="user_form">
+        <div class="user_form_box">
+            <label for="email">邮箱</label><br>
+            <input type="email" name="email" id="email" placeholder="邮箱" value={{email}}>
+        </div>
+        <div class="user_form_box">
+            <label for="Nickname">昵称</label><br>
+            <input type="text" name="Nickname" id="Nickname" placeholder="昵称" value={{Nickname}}><br>
+        </div>
+        <div class="user_form_box">
+            <label for="password">密码</label><br>
+            <input type="password" name="password" id="password" placeholder="密码"><br>
+        </div>
+        <div class="user_form_box">
+            <input type="radio" name="activation" id="activation_false" value="0" {{activation === '0' ? "checked" :""}}><label for="activation_false"> 不激活</label>
+            <input type="radio" name="activation" id="activation_true" value="1" {{activation === '1' ? "checked" :""}}><label for="activation_true"> 激活</label><br>
+        </div>
+        <div class="user_form_box">
+            <input type="radio" name="power" id="power_admin" value="admin" {{power === 'admin' ? "checked" :""}}><label for="power_admin"> 超级管理员</label>
+            <input type="radio" name="power" id="power_normal" value="normal" {{power === 'normal' ? "checked" :""}}><label for="power_normal"> 普通用户</label><br>
+        </div>
+        <input type="hidden" name="src_img" value="{{src_img}}" class="src_img">
+        <input type="hidden" name='id' value="{{@_id}}">
+        <button class="user_add_btn" type="button">修改</button>
+    </form>
+
+</script>
+<script src="/common/js/template-web.js"></script>
+<script src="/common/js/Ajax.js"></script>
+<script src="/login/js/user.js"></script>
+</body>
+<script src="/login/js/exit.js"></script>
+</html>
+<!-- 现在要做的是用户页面的静态页面 -->

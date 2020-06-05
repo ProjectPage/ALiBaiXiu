@@ -21,24 +21,64 @@ header .user_center a{
     font-size: 12px;margin-left: 20px;color:rgb(16, 60, 100)
 }
 /* 导航 */
+nav .nav_list_list i{
+    float: right;padding: 2px 0 0;box-sizing: border-box;
+}
 nav .nav_list .nav_list_list a{
-    color: rgb(235, 235, 235);padding: 10px 20px;box-sizing: border-box;
+    color: rgb(182, 182, 182);padding: 10px 20px;box-sizing: border-box;
     font-size: 14px;display: block;
 }
-nav .nav_list li:first-child{
+nav .nav_list .nav_list_first{
     height:200px;background-color: rgb(19, 70, 104);box-sizing: border-box;
     padding: 30px 0;margin-bottom: 10px;
 }
 .nav_list .portrait a{
     display: block;width: 100px;height: 100px;border-radius: 50%;
-    background-color: chartreuse;margin: 0 auto 15px;
+    margin: 0 auto 15px;overflow: hidden;
 }
 .portrait img{
-    vertical-align: top;
+    vertical-align: top;height: 100%;
 }
 .nav_list .username a{
     font-size: 16px;color: rgb(228, 228, 228);font-weight: 500;
     display: block;text-align: center;
+}
+.nav_list li .select_nav{
+    background-color: rgb(26, 58, 85);color: #fff !important;
+}
+.article{
+    padding: 0 11px;max-height: 0px;overflow: hidden;opacity: 0;
+}
+.nav_list .show_nav_animation{
+    animation: show_nav_article .3s ease forwards;
+}
+.nav_list .hidden_nav_animation{
+    animation: hidden_nav_article .3s ease forwards;
+}
+.article a{
+    font-size: 12px !important;transition: 0.3s;
+}
+
+/* 导航东效果 */
+@keyframes show_nav_article{
+    from{
+        max-height: 0px;
+        opacity: 0;
+    }
+    to{
+        max-height: 108px;
+        opacity: 1;
+    }
+}
+@keyframes hidden_nav_article{
+    from{
+        max-height: 108px;
+        opacity: 1;
+    }
+    to{
+        max-height: 0px;
+        opacity: 0;
+    }
 }
 
 /* 主体 */

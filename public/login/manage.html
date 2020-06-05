@@ -28,20 +28,31 @@
         </ul>
         <div class="user_center">
             <a href="" class="iconfont icon-gerenzhongxin"> 个人中心</a>
-            <a href="" class="iconfont icon-tuichu_huaban1"> 退出</a>
+            <a href="javascript:;" class="iconfont icon-tuichu_huaban1 exit"> 退出</a>
         </div>
     </header>
     <nav>
+        <script type="text/html" id="yonghu_xinxi">
+            <div class="portrait"><a href=""><img src="{{result.src_img}}" alt="头像"></a></div>
+            <h5 class="username"><a href="">{{result.Nickname}}</a></h5>
+        </script>
         <ul class="nav_list">
-            <li>
-                <div class="portrait"><a href=""><img src=""></a></div>
-                <h5 class="username"><a href="">名字</a></h5>
+            <li class="nav_list_first select_nav">
+                <!-- <div class="portrait"><a href=""><img src=""></a></div>
+                <h5 class="username"><a href="">名字</a></h5> -->
             </li>
-            <li class="nav_list_list"><a href="" class="iconfont icon-ziyuan"> 仪表盘</a></li>
-            <li class="nav_list_list"><a href="" class="iconfont icon-wenzhang"> 文章</a></li>
+            <li class="nav_list_list"><a href="/admin/manage" class="iconfont icon-ziyuan select_nav"> 仪表盘</a></li>
+            <li class="nav_list_list list_nav_article">
+                <a href="javascript:;" class="iconfont icon-wenzhang"> 文章<i class="iconfont icon-youjiantou"></i></a>
+                <ol class="article">
+                    <li class="article_list"><a href="">所有文章</a></li>
+                    <li class="article_list"><a href="">写文章</a></li>
+                    <li class="article_list"><a href="">分类目录</a></li>
+                </ol>
+            </li>
             <li class="nav_list_list"><a href="" class="iconfont icon-pinglun"> 评论</a></li>
-            <li class="nav_list_list"><a href="" class="iconfont icon-yonghu"> 用户</a></li>
-            <li class="nav_list_list"><a href="" class="iconfont icon-shezhi"> 设置</a></li>
+            <li class="nav_list_list"><a href="/admin/user" class="iconfont icon-yonghu"> 用户</a></li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-shezhi"> 设置<i class="iconfont icon-youjiantou"></i></a></li>
         </ul>
     </nav>
     <section>
@@ -57,5 +68,10 @@
             <dd><a href="">10条评论(2条待审核)</a></dd>
         </dl>
     </section>
+    <input type="hidden" id="user_email" value="">
 </body>
+<script src="/common/js/Ajax.js"></script>
+<script src="/common/js/template-web.js"></script>
+<script src="/login/js/manage.js"></script>
+<script src="/login/js/exit.js"></script>
 </html>
