@@ -1,0 +1,88 @@
+nav{
+    height: 100vh;width: 15%;background-color: rgb(20, 82, 110);float: left;
+}
+header{
+    width: 85%;height: 5vh;background-color: rgb(255, 255, 255);float: right;display: flex;
+    align-items: center;justify-content: space-between;padding: 0 10px;
+    box-sizing: border-box;
+}
+section{
+    width: 85%;height: 95vh;background-color: rgb(228, 228, 228);float: right;box-sizing: border-box;
+    padding: 15px;
+}
+/* 头部/ */
+header .list{
+    width: 28px;height: 24px;background-color: rgb(219, 219, 219);padding: 5px 0;box-sizing: border-box;
+}
+.list li{
+    height: 2px;background-color: teal;margin: 2px 5px;border-radius: 2px;
+}
+header .user_center a{
+    font-size: 12px;margin-left: 20px;color:rgb(16, 60, 100)
+}
+/* 导航 */
+nav .nav_list .nav_list_list a{
+    color: rgb(182, 182, 182);padding: 10px 20px;box-sizing: border-box;
+    font-size: 14px;display: block;
+}
+nav .nav_list .nav_list_first{
+    height:200px;background-color: rgb(19, 70, 104);box-sizing: border-box;
+    padding: 30px 0;margin-bottom: 10px;
+}
+.nav_list .portrait a{
+    display: block;width: 100px;height: 100px;border-radius: 50%;
+    margin: 0 auto 15px;overflow: hidden;
+}
+.portrait img{
+    vertical-align: top;height: 100%;
+}
+.nav_list .username a{
+    font-size: 16px;color: rgb(228, 228, 228);font-weight: 500;
+    display: block;text-align: center;
+}
+.nav_list  .select_nav{
+    background-color: rgb(26, 58, 85);color: #fff !important;
+}
+nav .nav_list_list i{
+    float: right;padding: 2px 0 0;box-sizing: border-box;
+}
+.article{
+    padding: 0 11px;max-height: 0px;overflow: hidden;opacity: 0;
+}
+.nav_list .show_nav_animation{
+    animation: show_nav_article .3s ease forwards;
+}
+.nav_list .hidden_nav_animation{
+    animation: hidden_nav_article .3s ease forwards;
+}
+.article a{
+    font-size: 12px !important;transition: 0.3s;
+}
+.article .color_select_article{
+    color: #fff !important;
+}
+
+/* 导航东效果 */
+@keyframes show_nav_article{
+    from{
+        max-height: 0px;
+        opacity: 0;
+    }
+    to{
+        max-height: 108px;
+        opacity: 1;
+    }
+}
+@keyframes hidden_nav_article{
+    from{
+        max-height: 108px;
+        opacity: 1;
+    }
+    to{
+        max-height: 0px;
+        opacity: 0;
+    }
+}
+
+
+

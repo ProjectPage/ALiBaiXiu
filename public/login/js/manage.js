@@ -18,20 +18,17 @@
             alert('在用户页面获取登录信息错误')
         }
     })
-    // 导航栏文章动效
-    var list_nav_article = document.querySelector('.list_nav_article');
-    list_nav_article.onclick = function(e){
-        // 获得两个元素的类名有么有指定的值
-        var ele_1 = this.lastElementChild;
-        var ele_2 = this.children[0].children[0];
-        ele_1.classList[1] === 'show_nav_animation' ? (ele_1.classList.remove('show_nav_animation'),ele_1.classList.add('hidden_nav_animation'),ele_2.classList.add('icon-youjiantou'),ele_2.classList.remove('icon-xiajiantou'))
-                                                    :(ele_1.classList.add('show_nav_animation'),ele_1.classList.remove('hidden_nav_animation'),ele_2.classList.add('icon-xiajiantou'),ele_2.classList.remove('icon-youjiantou'));
-        // this.lastElementChild.classList.add('show_nav_animation');
-        function hasClass(){
 
-        }
-    }
     // 1.得获得那个元素
     // 2.给这个元素添加点击事件
     // 3.通过点击给这个元素添加动画类  这个类得有两个，一个出现 一个消失
 })()
+
+// 现在要做的是分类目录
+// 1.静态页面    选中的是高亮文字，同时文章也是高亮的，在主体上变化，头部和导航基本不变，所以说这是一个难题
+//     这个页面和用户页面极为类似，就把用户页面拷贝过来进行修改基本可以了
+//     所以完成是这样的
+//         1.拷贝用户页面，引入相对应的文件
+//         2.对一些需要修改的地方进行修改补缺
+// 2.分析需要什么东西
+// 3.填写分类信息，将分类添加到数据库

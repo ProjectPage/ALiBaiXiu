@@ -1,0 +1,132 @@
+<script>
+    function isLogin(result){
+        if(!result){
+            location.href = '/admin/login'
+        }
+    }
+</script>
+<script src="http://localhost:3000/admin/statu?callback=isLogin"></script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分类页面-阿里佰秀</title>
+    <link rel="stylesheet" href="/common/css/common.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/login/css/iconfont.css">
+    <link rel="stylesheet" href="/login/css/directory.css">
+</head>
+<body>
+    <header>
+        <ul class="list">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="user_center">
+            <a href="" class="iconfont icon-gerenzhongxin"> 个人中心</a>
+            <a href="javascript:;" class="iconfont icon-tuichu_huaban1 exit"> 退出</a>
+        </div>
+    </header>
+    <nav>
+        <ul class="nav_list">
+            <li class="nav_list_first">
+                <!-- <div class="portrait"><a href=""><img src=""></a></div>
+                <h5 class="username"><a href="">名字</a></h5> -->
+            </li>
+            <li class="nav_list_list"><a href="/admin/manage" class="iconfont icon-ziyuan"> 仪表盘</a></li>
+            <li class="nav_list_list list_nav_article select_nav">
+                <a href="javascript:;" class="iconfont icon-wenzhang color_select_article"> 文章<i class="iconfont icon-xiajiantou"></i></a>
+                <ol class="article show_nav_animation">
+                    <li class="article_list"><a href="/admin/article">所有文章</a></li>
+                    <li class="article_list"><a href="/admin/article_write">写文章</a></li>
+                    <li class="article_list"><a href="/admin/directory" class="color_select_article">分类目录</a></li>
+                </ol>
+            </li>            
+            <li class="nav_list_list"><a href="" class="iconfont icon-pinglun"> 评论</a></li>
+            <li class="nav_list_list"><a href="/admin/user" class="iconfont icon-yonghu"> 用户</a></li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-shezhi"> 设置<i class="iconfont icon-youjiantou"></i></a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="directory">分类目录</div>
+        <div class="left_directory">
+            <div class="add_directory">添加分类</div>
+            <form id="add_directory_form">
+                <div class="box_directory_form">
+                    <label for="name_directory">名称</label><br>
+                    <input type="text" name="name_directory" id="name_directory" placeholder="名称"">
+                </div>
+                <div class="box_directory_form">
+                    <label for="icon_directory">图标</label><br>
+                    <input type="text" name="icon_directory" id="icon_directory" placeholder="图标"><br>
+                </div>
+                <!-- <input type="hidden" name="src_img" value="" class="src_img"> -->
+                <button class="btn_add_directory" type="button">添加</button>
+            </form>
+        </div>
+        <div class="right_directory">
+            <a href="javascript:;" class="many_delete dispalyNone">批量删除</a>
+            <table border="0" cellspacing="1" id="table_directory">
+                <tr class="title_directory">
+                    <td>
+                        <input type="checkbox" name="selectAll" id="selectAll">
+                    </td>
+                    <td>名称</td>
+                    <td>操作</td>
+                </tr>
+            </table>
+            <div class="slide">
+                <span>
+                </span>
+            </div>
+        </div>
+    </section>
+<script type="text/html" id="yonghu_xinxi">
+    <div class="portrait"><a href=""><img src="{{result.src_img}}" alt="头像"></a></div>
+    <h5 class="username"><a href="">{{result.Nickname}}</a></h5>
+</script>
+<script type="text/html" id="template_add_directory">
+            <div class="box_directory_form">
+                <label for="name_directory">名称</label><br>
+                <input type="text" name="name_directory" id="name_directory" placeholder="名称" value="{{name_directory}}">
+            </div>
+            <div class="box_directory_form">
+                <label for="icon_directory">图标</label><br>
+                <input type="text" name="icon_directory" id="icon_directory" placeholder="图标" value="{{icon_directory}}"><br>
+            </div>
+            <input type="hidden" name="id" value="{{@_id}}">
+            <button class="btn_add_directory" type="button">修改</button>
+</script>
+<script type="text/html" id="template_list_directory">
+    {{each records}}
+    <tr class="content_directory">
+        <td>
+            <input type="checkbox" name="select" id="select" value="{{@$value._id}}"">
+        </td>
+        <td>{{$value.name_directory}}</td>
+        <td>
+            <a href="javascript:;" class="modify_directory" data-id="{{@$value._id}}">编辑</a><a href="javascript:;" class="delete_directory" data-id="{{@$value._id}}">删除</a>
+        </td>
+    </tr>
+    {{/each}}
+</script>
+<script type="text/html" id="template_slide">
+    {{if result.page > 1}}
+        <a href="javascript:;" data-href="{{result.page - 1}}">上一页</a>
+    {{/if}}
+    {{each result.display}}
+        <a href="javascript:;" class="{{$value === result.page ? 'select' : ''}}" data-href="{{$value}}">{{$value}}</a>
+    {{/each}}
+    {{if result.page < result.display[result.display.length - 1]}}
+        <a href="javascript:;" data-href="{{result.page -0 + 1}}">下一页</a>
+    {{/if}}
+</script>
+<script src="/common/js/template-web.js"></script>
+<script src="/common/js/Ajax.js"></script>
+<script src="/login/js/directory.js"></script>
+</body>
+<script src="/login/js/common.js"></script>
+<script src="/login/js/exit.js"></script>
+</html>

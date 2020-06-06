@@ -1,0 +1,103 @@
+<script>
+    function isLogin(result){
+        if(!result){
+            location.href = '/admin/login'
+        }
+    }
+</script>
+<script src="http://localhost:3000/admin/statu?callback=isLogin"></script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分类页面-阿里佰秀</title>
+    <link rel="stylesheet" href="/common/css/common.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/login/css/iconfont.css">
+    <link rel="stylesheet" href="/login/css/article_write.css">
+</head>
+<body>
+    <header>
+        <ul class="list">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="user_center">
+            <a href="" class="iconfont icon-gerenzhongxin"> 个人中心</a>
+            <a href="javascript:;" class="iconfont icon-tuichu_huaban1 exit"> 退出</a>
+        </div>
+    </header>
+    <nav>
+        <ul class="nav_list">
+            <li class="nav_list_first">
+                <!-- <div class="portrait"><a href=""><img src=""></a></div>
+                <h5 class="username"><a href="">名字</a></h5> -->
+            </li>
+            <li class="nav_list_list"><a href="/admin/manage" class="iconfont icon-ziyuan"> 仪表盘</a></li>
+            <li class="nav_list_list list_nav_article select_nav">
+                <a href="javascript:;" class="iconfont icon-wenzhang color_select_article"> 文章<i class="iconfont icon-xiajiantou"></i></a>
+                <ol class="article show_nav_animation">
+                    <li class="article_list"><a href="javascript:;" class="title_article_all">所有文章</a></li>
+                    <li class="article_list"><a href="javascript:;" class="color_select_article title_article_write">写文章</a></li>
+                    <li class="article_list"><a href="/admin/directory" class="title_directory">分类目录</a></li>
+                </ol>
+            </li>            
+            <li class="nav_list_list"><a href="" class="iconfont icon-pinglun"> 评论</a></li>
+            <li class="nav_list_list"><a href="/admin/user" class="iconfont icon-yonghu"> 用户</a></li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-shezhi"> 设置<i class="iconfont icon-youjiantou"></i></a></li>
+        </ul>
+    </nav>
+    <section>
+        <h5 class="text_article_write">写文章</h5>
+        <form action="" method="post" id="form_article_write">
+            <div class="left_form">
+                <label for="title_article">标题</label><br>
+                <input type="text" name="title" id="title_article" placeholder="文章标题"><br>
+                <label for="content_article">内容</label><br>
+                <textarea name="content" id="content_article" cols="30" rows="10" placeholder="内容"></textarea><br>
+            </div>
+            <div class="right_form">
+                <div class="box_form">
+                    <label for="cover_article ">文章封面</label><br>
+                    <input type="file" name="cover" id="cover_article">
+                </div>
+                <div class="box_form">
+                    <label for="directory_article">所属分类</label><br>
+                    <select name="directory" id="directory_article">
+                        <option value="请选择分类">请选择分类</option>
+                        <option value="javascript">javascript</option>
+                    </select>                    
+                </div>
+                <div class="box_form">
+                </div>
+                    <label for="date_article">发布时间</label><br>
+                    <input type="date" name="date" id="date_article">
+                </div>
+                <div class="box_form">
+                    <label for="status_article">状态</label><br>
+                    <select name="status" id="status_article">
+                        <option value="草稿">草稿</option>
+                        <option value="发布">发布</option>
+                    </select>
+                </div>
+
+
+            </div>
+        </form>
+    </section>
+<script type="text/html" id="yonghu_xinxi">
+    <div class="portrait"><a href=""><img src="{{result.src_img}}" alt="头像"></a></div>
+    <h5 class="username"><a href="">{{result.Nickname}}</a></h5>
+</script>
+
+
+
+<script src="/common/js/template-web.js"></script>
+<script src="/common/js/Ajax.js"></script>
+<script src="/login/js/article_write.js"></script>
+</body>
+<script src="/login/js/common.js"></script>
+<script src="/login/js/exit.js"></script>
+</html>

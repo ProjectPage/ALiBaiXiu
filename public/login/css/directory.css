@@ -40,7 +40,7 @@ nav .nav_list .nav_list_first{
     font-size: 16px;color: rgb(228, 228, 228);font-weight: 500;
     display: block;text-align: center;
 }
-.nav_list li .select_nav{
+.nav_list  .select_nav{
     background-color: rgb(26, 58, 85);color: #fff !important;
 }
 nav .nav_list_list i{
@@ -57,6 +57,9 @@ nav .nav_list_list i{
 }
 .article a{
     font-size: 12px !important;transition: 0.3s;
+}
+.article .color_select_article{
+    color: #fff !important;
 }
 
 /* 导航东效果 */
@@ -81,88 +84,90 @@ nav .nav_list_list i{
     }
 }
 
+
+
 /* 主体/ */
-section .user{
+section .directory{
     width: 100%;height: 30px;line-height: 30px;font-size: 20px;
     margin-bottom: 8px;
 }
-/* 添加用户 */
-section .user_left{
+/* 添加分类 */
+section .left_directory{
     float: left;width: 35%;font-size: 12px;
 }
-section .user_right{
+section .right_directory{
     float: right;width: 65%;
 }
-.user_left .user_add_text{
+.left_directory .add_directory{
     font-size: 16px;height: 25px;line-height: 25px;margin-bottom: 2px;
 }
-#user_touxiang{
-    margin: 5px 0 10px 2px;cursor: pointer;position: relative;
-    max-height: 150px;overflow: hidden;
-}
-#touxiang_file{
-    position: absolute;top: 0;display: none;
-}
-#user_touxiang img{
-    vertical-align: top;width:150px;height: auto;
-}
-#email,
-#Nickname,
-#password{
+#name_directory,
+#icon_directory{
     width: 99%;height: 25px;line-height: 25px;border: 1px solid rgb(199, 199, 199);
     box-sizing: border-box;background-color: #fff;border-radius: 3px;
     padding: 0 5px;margin-left:1%;margin-top: 5px;
 }
-#user_form{
+#add_directory_form{
     font-size: 14px;
 }
-#user_form .user_form_box{
+#add_directory_form .box_directory_form{
     margin: 10px 0 ;
 }
-#user_form .user_add_btn{
+#add_directory_form .btn_add_directory{
     padding: 5px 10px;background-color: rgb(78, 88, 114);border: none;
     color: #fff;outline: none;
 }
-/* 用户列表 */
-section .user_right{
-    padding: 0 10px;box-sizing: border-box;
+/* 分类列表 */
+section .right_directory{
+    padding: 0 20px;box-sizing: border-box;
 }
-.user_right table{
+.right_directory table{
     background-color: rgb(201, 201, 201);width: 100%;font-size: 12px;
 }
-.user_right tr{
+.right_directory tr{
     background-color: rgb(224, 224, 224);height: 40px;line-height: 40px;
 }
-.user_right .user_list_title{
+.right_directory .title_directory{
     background-color: rgb(228, 228, 228);
 }
-.user_right td{
+.right_directory td{
     padding: 0 5px;box-sizing: border-box;
 }
-.user_right tr td:nth-child(2),
-.user_right tr td:last-child,
-.user_right tr td:first-child{
+.right_directory tr td:last-child,
+.right_directory tr td:first-child{
     text-align: center;
 }
-.user_right .user_touxiang_table{
-    display: inline-block;max-height: 30px;overflow: hidden;border-radius: 3px;max-width: 30px;
-    width: 30px;height: 30px;
+
+
+.right_directory td:last-child a{
+    padding: 2px 4px;box-sizing: border-box;
+    border-radius: 3px;margin-right: 2px;color: #fff;
 }
-.user_right img{
-    width: 30px;vertical-align: top;
-}
-.user_right td:last-child a{
-    padding: 2px 4px;box-sizing: border-box;border: 1px solid rgb(175, 175, 175);
-    border-radius: 3px;margin-right: 2px;
-}
-.user_right a:last-child{
-    background-color: rgb(243, 75, 45);color: #fff;border: 1px solid rgb(243, 75, 45);
+.right_directory .delete_directory{
+    background-color: rgb(243, 75, 45);
     margin-left: 2px;margin-right: 0;
 }
-.user_right .many_delete{
+.right_directory .modify_directory{
+    background-color: cadetblue;
+}
+.right_directory .many_delete{
     margin-bottom: 3px;padding: 2px 5px;background-color: rgb(243, 75, 45);border-radius: 2px;font-size: 12px;box-sizing: border-box;
     display: inline-block;color: #fff;
 }
-.user_right .dispalyNone{
+.right_directory .dispalyNone{
     display: none;
 }
+.right_directory tr td:nth-child(2){
+    width:75%
+}
+.right_directory .slide{
+    text-align: center;font-size: 12px;margin-top: 10px;
+}
+.right_directory .slide a{
+    display: inline-block;padding: 2px 5px;box-sizing: border-box;
+    background-color: chocolate;
+}
+.right_directory .slide .select{
+    background-color: cornflowerblue;
+}
+

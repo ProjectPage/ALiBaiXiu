@@ -47,7 +47,6 @@
         }
     })
     // 1.给按钮添点击事件，检测数值是否符合规则，符合就发送请求
-    var btn = document.querySelector('.user_add_btn');
     var user_left = document.querySelector('.user_left');
     // 给元素添加监听事件，因为使用模板实在最后将模板添加到页面上的，所以这时候如果使用绑定就会报没有找到这个元素
     user_left.addEventListener('click',function(ev){
@@ -302,40 +301,36 @@
         for(let i = 0;i<select.length;i++){
             id[`id_${i}`] = select[i].value
         }
-        Ajax({
-            url:'/admin/user_delete',
-            data:id,
-            success:function(result,xhr){
-                if(result){
-                    location.reload()
+        var isConfirm = confirm('您确认要删除这些吗?');
+        if(isConfirm){
+            Ajax({
+                url:'/admin/user_delete',
+                data:id,
+                success:function(result,xhr){
+                    if(result){
+                        location.reload()
+                    }
+                },
+                fail:function(xhr){
+                    alert('批量删除用户出错')
                 }
-            },
-            fail:function(xhr){
-                alert('批量删除用户出错')
-            }
-        })
-        // 点击批量删除
-        // 2.将所有选中的用户的id传过去
-        // 3.服务器删除所有的
-        // 4.删除成功返回true/false
+            })            
+        }
+
     }
 })()
 
-// 现在要做删除用户
-// 1.点击删除    将这个用户的id传过去
-// 2.服务器根据id标识删除    找到这个用户并删除
-// 3.返回true/false    true就刷新false就弹窗
-// 4.还有一种是批量删除，根据选中的用户来进行删除    
-//     根据复选框 每个用户都有一个id值 各种复选框之间的关系是这个样子的
-//         1.当选中全选，那这个页面的所有复选框都会选中
-//         2.当全选没有选中。那么有两种情况
-//             1.就是下面的复选框没选
-//             2.下面的复选框选了几个，但没有全选
-// 5.选中用户    
-// 6.点击批量删除    
-// 7.服务器根据id表示删除
-// 6.返回true/false
+// 现在要做的是给那个a添加一个点击事件，默认阻止跳转
+// var nav_list = document.querySelector('.nav_list');
+// nav_list.addEventListener('click',function(ev){
+//     if(ev.target.className === 'title_article_write'){
+//         Ajax({
 
-// 首先将逻辑理清
-// 1.点击那个全选呢。这个页所有的复选框都被选中/或者全部被不旋踵
-// 2.只要下面所有的复选都被选中，这个选中所有的就会被选中
+//         })
+//     }
+// },false)
+// // 1.首先得选中
+// // 2.监听函数
+// // 3.发送Ajax请求
+// // 4.服务器返回数据
+// // 5.模板拼接

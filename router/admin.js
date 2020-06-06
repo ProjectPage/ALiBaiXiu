@@ -26,6 +26,19 @@ admin.get('/user_modify',require('./admin/user_modify_get'));
 admin.post('/user_modify',require('./admin/user_modify_post'));
 // 删除一个用户
 admin.get('/user_delete',require('./admin/user_delete_get'));
+// 分类目录
+admin.get('/directory',require('./admin/directory_get'));
+// 添加分类
+admin.post('/add_directory',require('./admin/add_directory_post'));
+// 获取分类列表
+admin.get('/list_directory',require('./admin/list_directory_get'));
+// 删除分类
+admin.get('/delete_directory',require('./admin/delete_directory_get'));
+// 修改分类
+admin.get('/modify_directory',require('./admin/modify_directory_get'));
+admin.post('/modify_directory',require('./admin/modify_directory_post'));
+// 发布文章页面
+admin.get('/article_write',require('./admin/article_write_get'));
 module.exports = admin;
 
 

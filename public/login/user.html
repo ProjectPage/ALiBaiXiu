@@ -30,20 +30,23 @@
         </div>
     </header>
     <nav>
-        <script type="text/html" id="yonghu_xinxi">
-            <div class="portrait"><a href=""><img src="{{result.src_img}}" alt="头像"></a></div>
-            <h5 class="username"><a href="">{{result.Nickname}}</a></h5>
-        </script>
         <ul class="nav_list">
-            <li>
+            <li class="nav_list_first">
                 <!-- <div class="portrait"><a href=""><img src=""></a></div>
                 <h5 class="username"><a href="">名字</a></h5> -->
             </li>
             <li class="nav_list_list"><a href="/admin/manage" class="iconfont icon-ziyuan"> 仪表盘</a></li>
-            <li class="nav_list_list"><a href="" class="iconfont icon-wenzhang"> 文章</a></li>
+            <li class="nav_list_list list_nav_article">
+                <a href="javascript:;" class="iconfont icon-wenzhang"> 文章<i class="iconfont icon-youjiantou"></i></a>
+                <ol class="article">
+                    <li class="article_list"><a href=".admin/article" class="title_article_all">所有文章</a></li>
+                    <li class="article_list"><a href="/admin/article_write" class="title_article_write">写文章</a></li>
+                    <li class="article_list"><a href="/admin/directory" class="title_directory">分类目录</a></li>
+                </ol>
+            </li>            
             <li class="nav_list_list"><a href="" class="iconfont icon-pinglun"> 评论</a></li>
             <li class="nav_list_list"><a href="/admin/user" class="iconfont icon-yonghu select_nav"> 用户</a></li>
-            <li class="nav_list_list"><a href="" class="iconfont icon-shezhi"> 设置</a></li>
+            <li class="nav_list_list"><a href="" class="iconfont icon-shezhi"> 设置<i class="iconfont icon-youjiantou"></i></a></li>
         </ul>
     </nav>
     <section>
@@ -127,6 +130,10 @@
         </div>
     </section>
     <input type="hidden" value="" id="user_email">
+<script type="text/html" id="yonghu_xinxi">
+    <div class="portrait"><a href=""><img src="{{result.src_img}}" alt="头像"></a></div>
+    <h5 class="username"><a href="">{{result.Nickname}}</a></h5>
+</script>
 <script type="text/html" id="user_form_template">
     <div class="user_add_text">添加新用户</div>
     <label for="user_touxiang">头像</label>
@@ -169,6 +176,7 @@
 <script src="/common/js/Ajax.js"></script>
 <script src="/login/js/user.js"></script>
 </body>
+<script src="/login/js/common.js"></script>
 <script src="/login/js/exit.js"></script>
 </html>
 <!-- 现在要做的是用户页面的静态页面 -->
