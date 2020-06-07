@@ -27,7 +27,7 @@ nav .nav_list .nav_list_list a{
 }
 nav .nav_list .nav_list_first{
     height:200px;background-color: rgb(19, 70, 104);box-sizing: border-box;
-    padding: 30px 0;margin-bottom: 10px;
+    padding: 30px 0;
 }
 .nav_list .portrait a{
     display: block;width: 100px;height: 100px;border-radius: 50%;
@@ -85,4 +85,103 @@ nav .nav_list_list i{
 }
 
 
+/* 主体-写文章 */
+.text_article_write{
+    font-size: 26px;font-weight: 500;
+}
+#form_article_write{
+    display: flex;align-items: top;font-size: 12px;
+}
+.left_form{
+    /* flex: 1; */width: 80%;box-sizing: border-box;padding: 10px;
+}
+#content_article,
+#title_article{
+    width: 100%;padding: 0 5px;box-sizing: border-box;
+    border-radius: 5px;border: 1px solid rgba(0, 0, 0, 0.123);
+    height: 30px;line-height: 30px;margin: 10px 0;
+}
+#content_article{
+    height: 300px;border-radius: 7px;
+}
+.right_form{
+    flex: 1;box-sizing: border-box;padding: 10px;
+}
+.box_form{
+    margin-bottom: 10px;
+}
+.right_form input,
+.right_form select{
+    width: 100%;margin-top: 8px;height: 28px;
+}
+.btn_article_write{
+    padding: 5px 10px;box-sizing: border-box;background-color: rgb(26, 67, 121);
+    color: #fff;border: none;cursor: pointer;
+}
 
+/* 主体-所有文章 */
+.text_article_all{
+    font-size: 26px;font-weight: 500;display: inline-block;margin-right: 5px;
+    margin-bottom: 10px;
+}
+.write_article{
+    display: inline-block;padding: 2px 5px;border-radius: 3px;
+    background-color: rgb(20, 50, 105);color: #fff;font-size: 12px;
+}
+.slide,
+.screen_and_slide{
+    display: flex;justify-content: space-between;align-items: center;
+    height: 26px;font-size: 12px;
+}
+.screen{
+    display: flex;line-height:26px
+}
+.btn_screen{
+    padding: 0 5px;line-height: 26px;
+}
+.btn_screen,
+.screen select{
+    height: 26px;display: inline-block;border-radius: 4px;border: 1px solid rgb(192, 192, 192);
+    box-sizing: border-box;background-color: rgb(243, 243, 243);font-size: 12px;margin-right: 5px;
+}
+.slide{
+    border-radius: 4px;border: 1px solid rgb(192, 192, 192);
+    overflow: hidden;
+}
+.slide li{
+    padding: 0 10px;box-sizing: border-box;background-color: rgb(243, 243, 243);
+    height: 26px;line-height: 26px;border-right: 1px solid rgb(192, 192, 192);cursor: pointer;
+}
+.slide li:last-child{
+    border: none;
+}
+#table_article{
+    width: 100%;text-align: center;margin-top: 10px;
+    background-color: rgb(192, 192, 192);box-sizing: border-box;
+}
+#table_article tr td:first-child{
+    text-align: left;width:56%
+}
+
+#table_article tr{
+    font-size: 14px;font-weight: 400;height: 30px;box-sizing: border-box;
+    line-height: 30px;
+}
+#table_article tr td{
+    padding: 0 10px;box-sizing: border-box;
+}
+#table_article tr:nth-child(even){
+    background-color: rgb(224, 224, 224);
+}
+#table_article tr:nth-child(odd){
+    background-color: rgb(238, 238, 238);
+}
+#table_article .delete_article,
+#table_article .modify_article{
+    padding: 2px 5px;border-radius: 4px;box-sizing: border-box;
+    background-color: lightcoral;color:#fff;margin-left: 3px;
+}
+#table_article .modify_article{
+    background-color: rgba(240, 128, 128, 0);border: 1px solid rgb(180, 180, 180);
+    color: black;margin-right: 3px;margin-left:0
+}

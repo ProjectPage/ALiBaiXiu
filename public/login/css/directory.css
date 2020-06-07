@@ -12,7 +12,7 @@ section{
 }
 /* 头部/ */
 header .list{
-    width: 28px;height: 24px;background-color: rgb(219, 219, 219);padding: 5px 0;box-sizing: border-box;
+    width: 28px;height: 24px;background-color: rgb(219, 219, 219);padding: 0px 0;box-sizing: border-box;
 }
 .list li{
     height: 2px;background-color: teal;margin: 2px 5px;border-radius: 2px;
@@ -27,7 +27,7 @@ nav .nav_list .nav_list_list a{
 }
 nav .nav_list .nav_list_first{
     height:200px;background-color: rgb(19, 70, 104);box-sizing: border-box;
-    padding: 30px 0;margin-bottom: 10px;
+    padding: 30px 0;
 }
 .nav_list .portrait a{
     display: block;width: 100px;height: 100px;border-radius: 50%;

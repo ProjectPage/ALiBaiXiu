@@ -39,6 +39,14 @@ admin.get('/modify_directory',require('./admin/modify_directory_get'));
 admin.post('/modify_directory',require('./admin/modify_directory_post'));
 // 发布文章页面
 admin.get('/article_write',require('./admin/article_write_get'));
+// 获取分类
+admin.get('/get_directory',require('./admin/get_directory_get'));
+// 添加文章
+admin.post('/add_article',require('./admin/add_article_post'));
+// 文章列表
+admin.get('/article',require('./admin/article_get'));
+// 筛选文章
+admin.get('/screen_article',require('./admin/screen_article_get'));
 module.exports = admin;
 
 
