@@ -47,6 +47,19 @@ admin.post('/add_article',require('./admin/add_article_post'));
 admin.get('/article',require('./admin/article_get'));
 // 筛选文章
 admin.get('/screen_article',require('./admin/screen_article_get'));
+// 编辑文章
+admin.get('/article_modify',require('./admin/article_modify_get'));
+admin.post('/modify_article',require('./admin/modify_article_post'));
+// 删除文章
+admin.get('/article_delete',require('./admin/article_delete_get'));
+// 评论页面
+admin.get('/comment',require('./admin/comment_get'));
+// 批准评论
+admin.get('/approval',require('./admin/approval_get'));
+// 删除评论
+admin.get('/comment_delete',require('./admin/comment_delete_get'));
+// 数据统计
+admin.get('/overview',require('./admin/overview_get'));
 module.exports = admin;
 
 

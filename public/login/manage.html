@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/common/css/common.css">
     <link rel="stylesheet" href="/login/css/manage.css">
     <link rel="stylesheet" href="/login/css/iconfont.css">
+    <!-- <link rel="stylesheet" href="/login/css/article_write.css"> -->
 </head>
 <body>
     <header>
@@ -43,11 +44,11 @@
             </li>
             <li class="nav_list_list"><a href="/admin/manage" class="iconfont icon-ziyuan select_nav"> 仪表盘</a></li>
             <li class="nav_list_list list_nav_article">
-                <a href="javascript:;" class="iconfont icon-wenzhang color_select_article" id="nav_article"> 文章<i class="iconfont icon-xiajiantou"></i></a>
+                <a href="javascript:;" class="iconfont icon-wenzhang color_select_article" id="nav_article"> 文章<i class="iconfont icon-youjiantou"></i></a>
                 <ol class="article">
-                    <li class="article_list"><a href="/admin/article">所有文章</a></li>
-                    <li class="article_list"><a href="/admin/article_write">写文章</a></li>
-                    <li class="article_list"><a href="/admin/directory">分类目录</a></li>
+                    <li class="article_list"><a href="javascript:;" id="title_article_all">所有文章</a></li>
+                    <li class="article_list"><a href="/admin/article_write" id="title_article_write">写文章</a></li>
+                    <li class="article_list"><a href="/admin/directory" id="title_directory">分类目录</a></li>
                 </ol>
             </li>
             <li class="nav_list_list"><a href="" class="iconfont icon-pinglun"> 评论</a></li>
@@ -59,20 +60,80 @@
         <div class="write_text">
             <h5>One Belt,One Rand</h5>
             <p>Thought dsksj sdk</p>
-            <h4><a href="">写文章</a></h4>
+            <h4><a href="/admin/article_write">写文章</a></h4>
         </div>
         <dl class="content_statistics">
-            <dt>站点内容统计</dt>
-            <dd><a href="">10篇文章(2篇草稿)</a></dd>
-            <dd><a href="">10个分类</a></dd>
-            <dd><a href="">10条评论(2条待审核)</a></dd>
         </dl>
     </section>
     <input type="hidden" id="user_email" value="">
 </body>
+<!-- 统计信息 -->
+<script type="text/html" id="template_overview">
+        <dt>站点内容统计</dt>
+        <dd><a href="javascript:;"><strong>{{size_article}}</strong>篇文章(<strong>{{size_article_0}}</strong>篇草稿)</a></dd>
+        <dd><a href="javascript:;"><strong>{{size_directory}}</strong>个分类</a></dd>
+        <dd><a href="javascript:;"><strong>{{size_comment}}</strong>条评论(<strong>{{size_comment_0}}</strong>条待审核)</a></dd>
+</script>
+<!-- 文章列表 -->
+<!-- <script type="text/html" id="list_article">
+    <h5 class="text_article_all">所有文章</h5><a class="write_article" href='/admin/article_write'>写文章</a>
+    <div class="screen_and_slide">
+        <div class="screen">
+            <select id="directory">
+                <option value=''>请选择分类</option>
+                {{each result.directory}}
+                    <option value="{{$value.name_directory}}">{{$value.name_directory}}</option>
+                {{/each}}
+            </select>
+            <select id="status">
+                <option value="">状态</option>
+                <option value="0">草稿</option>
+                <option value="1">已发布</option>
+            </select>
+            <a href="javascript:;" class="btn_screen">筛选</a>            
+        </div>
+        <ul class="slide">
+            {{if result.page > 1}}
+                <li data-page="{{result.page - 1}}" class="page_change" data-select="0">上一页</li>
+            {{/if}}
+            {{if result.display.length === 0}}
+                <li data-page="1" class="page_change" data-select="{{0}}">1</li>
+            {{/if}}
+            {{each result.display}}
+                <li data-page="{{$value}}" class="page_change" data-select="0">{{$value}}</li>
+            {{/each}}
+            {{if result.page < result.display[result.display.length - 1]}}
+                <li data-page="{{result.page - 0 + 1}}" class="page_change" data-select="0">下一页</li>
+            {{/if}}
+        </ul>
+    </div>
+    <table border='0' cellspacing='1' id='table_article'>
+        <tr>
+            <td>标题</td>
+            <td>作者</td>
+            <td>分类</td>
+            <td>发表时间</td>
+            <td>状态</td>
+            <td>操作</td>
+        </tr>
+        {{each result.records}}
+        <tr>
+            <td>{{$value.title}}</td>
+            <td>{{$value.author.Nickname}}</td>
+            <td>{{$value.directory}}</td>
+            <td>{{$imports.dateformat($value.date)}}</td>
+            <td>{{$value.status === '0' ? "草稿" : "已发布"}}</td>
+            <td>
+                <a href="javascript:;" class="modify_article" data-id="{{@$value._id}}">编辑</a><a href="javascript:;" class="delete_article" data-id="{{@$value._id}}">删除</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</script> -->
 <script src="/common/js/Ajax.js"></script>
 <script src="/common/js/template-web.js"></script>
 <script src="/login/js/manage.js"></script>
 <script src="/login/js/common.js"></script>
+<!-- <script src="/login/js/article_write.js"></script> -->
 <script src="/login/js/exit.js"></script>
 </html>

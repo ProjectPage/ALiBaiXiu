@@ -58,7 +58,7 @@ nav .nav_list_list i{
 .article a{
     font-size: 12px !important;transition: 0.3s;
 }
-.article .color_select_article{
+.nav_list .color_select_article{
     color: #fff !important;
 }
 
@@ -116,7 +116,7 @@ nav .nav_list_list i{
 }
 .btn_article_write{
     padding: 5px 10px;box-sizing: border-box;background-color: rgb(26, 67, 121);
-    color: #fff;border: none;cursor: pointer;
+    color: #fff;border: none;cursor: pointer;outline: none;
 }
 
 /* 主体-所有文章 */
@@ -168,7 +168,8 @@ nav .nav_list_list i{
     line-height: 30px;
 }
 #table_article tr td{
-    padding: 0 10px;box-sizing: border-box;
+    padding: 0 10px;box-sizing: border-box;overflow: hidden;
+    white-space: nowrap;text-overflow: ellipsis;
 }
 #table_article tr:nth-child(even){
     background-color: rgb(224, 224, 224);
@@ -178,10 +179,67 @@ nav .nav_list_list i{
 }
 #table_article .delete_article,
 #table_article .modify_article{
-    padding: 2px 5px;border-radius: 4px;box-sizing: border-box;
-    background-color: lightcoral;color:#fff;margin-left: 3px;
+    padding: 2px 5px;border-radius: 4px;box-sizing: border-box;font-size: 12px;
+    background-color: rgb(196, 65, 65);color:#fff;margin-left: 3px;
 }
 #table_article .modify_article{
     background-color: rgba(240, 128, 128, 0);border: 1px solid rgb(180, 180, 180);
     color: black;margin-right: 3px;margin-left:0
+}
+
+/* 评论 */
+.text_comment_all{
+    font-size: 26px;font-weight: 500;display: inline-block;margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.slide_comment{
+    height: 26px;font-size: 12px;
+}
+.slide{
+    border-radius: 4px;border: 1px solid rgb(192, 192, 192);
+    overflow: hidden;float: right;
+}
+.slide li{
+    padding: 0 10px;box-sizing: border-box;background-color: rgb(243, 243, 243);
+    height: 26px;line-height: 26px;border-right: 1px solid rgb(192, 192, 192);cursor: pointer;
+}
+.slide li:last-child{
+    border: none;
+}
+#table_comment{
+    width: 100%;text-align: left;margin-top: 10px;
+    background-color: rgb(192, 192, 192);box-sizing: border-box;
+}
+#table_comment tr{
+    font-size: 14px;font-weight: 400;height: 30px;box-sizing: border-box;
+    line-height: 30px;
+}
+#table_comment tr td{
+    padding: 0 10px;box-sizing: border-box;white-space: nowrap;
+    overflow: hidden;text-overflow: ellipsis;
+}
+#table_comment tr:nth-child(even){
+    background-color: rgb(224, 224, 224);
+}
+#table_comment tr:nth-child(odd){
+    background-color: rgb(238, 238, 238);
+}
+#table_comment .delete_comment,
+#table_comment .approval_comment{
+    padding: 2px 5px;border-radius: 4px;box-sizing: border-box;
+    background-color: rgb(196, 65, 65);color:#fff;margin-left: 3px;
+}
+#table_comment .approval_comment{
+    background-color: rgba(240, 128, 128, 0);background-color: rgb(30, 74, 110);
+    margin-right: 3px;margin-left:0;
+}
+#table_comment tr td:nth-child(2){
+    width: 40%;
+}
+#table_comment tr td:nth-child(3){
+    width: 30%;
+}
+#table_comment tr td:last-child{
+    text-align: center;font-size: 12px;
 }

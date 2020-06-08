@@ -18,6 +18,20 @@
             alert('在用户页面获取登录信息错误')
         }
     })
+    // 现在要在仪表盘里更新总共的数据多收
+    Ajax({
+        url:'/admin/overview',
+        success:function(result){
+            result = JSON.parse(result);
+            var tem_overview = template('template_overview',result);
+            var content_statistics = document.querySelector('.content_statistics');
+            content_statistics.innerHTML = tem_overview;
+            console.log(result,tem_overview)
+        },
+        fail:function(){
+            alert('获取数据统计出错')
+        }
+    })
 
     // 1.得获得那个元素
     // 2.给这个元素添加点击事件

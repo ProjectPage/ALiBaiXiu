@@ -7,6 +7,7 @@ require('./model/connect');
 // 应用集合规则
 require('./model/user');
 require('./model/directory');
+// require('./model/comment');
 const app = express();
 // 获得系统环境变量
 // console.log(process.env);

@@ -35,7 +35,7 @@
                 <!-- <div class="portrait"><a href=""><img src=""></a></div>
                 <h5 class="username"><a href="">名字</a></h5> -->
             </li>
-            <li class="nav_list_list"><a href="/admin/manage" class="iconfont icon-ziyuan"> 仪表盘</a></li>
+            <li class="nav_list_list"><a href="/admin/manage" class="iconfont icon-ziyuan" id="nav_yibiaopan"> 仪表盘</a></li>
             <li class="nav_list_list list_nav_article select_nav">
                 <a href="javascript:;" class="iconfont icon-wenzhang color_select_article" id="nav_article"> 文章<i class="iconfont icon-xiajiantou"></i></a>
                 <ol class="article show_nav_animation">
@@ -44,7 +44,7 @@
                     <li class="article_list"><a href="/admin/directory" class="title_directory" id="title_directory">分类目录</a></li>
                 </ol>
             </li>            
-            <li class="nav_list_list"><a href="" class="iconfont icon-pinglun"> 评论</a></li>
+            <li class="nav_list_list"><a href="javascript:;" class="iconfont icon-pinglun" id="comment"> 评论</a></li>
             <li class="nav_list_list"><a href="/admin/user" class="iconfont icon-yonghu"> 用户</a></li>
             <li class="nav_list_list"><a href="" class="iconfont icon-shezhi"> 设置<i class="iconfont icon-youjiantou"></i></a></li>
         </ul>
@@ -56,13 +56,13 @@
     <h5 class="username"><a href="">{{result.Nickname}}</a></h5>
 </script>
 <script type="text/html" id="section">
-    <h5 class="text_article_write">写文章</h5>
+    <h5 class="text_article_write">{{result ? "修改文章" : "写文章"}}</h5>
     <form  id="form_article_write">
         <div class="left_form">
             <label for="title_article">标题</label><br>
-            <input type="text" name="title" id="title_article" placeholder="文章标题"><br>
+            <input type="text" name="title" id="title_article" placeholder="文章标题" value="{{result ? result.title : ''}}"><br>
             <label for="content_article">内容</label><br>
-            <textarea name="content" id="content_article" cols="30" rows="10" placeholder="内容"></textarea><br>
+            <textarea name="content" id="content_article" cols="30" rows="10" placeholder="内容" >{{result ? result.content : ''}}</textarea><br>
         </div>
         <div class="right_form">
             <div class="box_form">
@@ -72,6 +72,9 @@
             <div class="box_form">
                 <label for="directory_article">所属分类</label><br>
                 <select name="directory" id="directory_article">
+                    {{each directory}}
+                        <option value="{{$value.name_directory}}" {{result.directory === $value.name_directory ? 'selected' : ''}}>{{$value.name_directory}}</option>
+                    {{/each}}
                 </select>                    
             </div>
             <div class="box_form">
@@ -81,14 +84,14 @@
             <div class="box_form">
                 <label for="status_article">状态</label><br>
                 <select name="status" id="status_article">
-                    <option value="0">草稿</option>
-                    <option value="1">发布</option>
+                    <option value="0" {{result ? (result.status === '0' ? 'selected' : '') : ''}}>草稿</option>
+                    <option value="1" {{result ? (result.status === '1' ? 'selected' : '') : ''}}>发布</option>
                 </select>
             </div>
             <div class="hidden">
-
+                <input type="hidden" name="id" value="{{@result ? result._id : ''}}" >
             </div>
-            <button class="btn_article_write" type="button">保存</button>
+            <button class="btn_article_write" type="button">{{result ? "修改" : "添加"}}</button>
         </div>
     </form>
 </script>
@@ -123,16 +126,16 @@
         </div>
         <ul class="slide">
             {{if result.page > 1}}
-                <li data-page="{{result.page - 1}}" class="page_change">上一页</li>
+                <li data-page="{{result.page - 1}}" class="page_change" data-select="0">上一页</li>
             {{/if}}
             {{if result.display.length === 0}}
-                <li data-page="1" class="page_change">1</li>
+                <li data-page="1" class="page_change" data-select="{{0}}">1</li>
             {{/if}}
             {{each result.display}}
-                <li data-page="{{$value}}" class="page_change">{{$value}}</li>
+                <li data-page="{{$value}}" class="page_change" data-select="0">{{$value}}</li>
             {{/each}}
             {{if result.page < result.display[result.display.length - 1]}}
-                <li data-page="{{result.page - 0 + 1}}" class="page_change">下一页</li>
+                <li data-page="{{result.page - 0 + 1}}" class="page_change" data-select="0">下一页</li>
             {{/if}}
         </ul>
     </div>
@@ -154,6 +157,48 @@
             <td>{{$value.status === '0' ? "草稿" : "已发布"}}</td>
             <td>
                 <a href="javascript:;" class="modify_article" data-id="{{@$value._id}}">编辑</a><a href="javascript:;" class="delete_article" data-id="{{@$value._id}}">删除</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</script>
+<!-- 评论列表 -->
+<script type="text/html" id="template_list_comment">
+    <h5 class="text_comment_all">所有文章</h5>
+    <div class="slide_comment">
+        <ul class="slide">
+            {{if result.page > 1}}
+                <li data-page="{{result.page - 1}}" class="page_change" data-select="1">上一页</li>
+            {{/if}}
+            {{if result.display.length === 0}}
+                <li data-page="1" class="page_change" data-select="1">1</li>
+            {{/if}}
+            {{each result.display}}
+                <li data-page="{{$value}}" class="page_change" data-select="1">{{$value}}</li>
+            {{/each}}
+            {{if result.page < result.display[result.display.length - 1]}}
+                <li data-page="{{result.page - 0 + 1}}" class="page_change" data-select="1">下一页</li>
+            {{/if}}
+        </ul>
+    </div>
+    <table border='0' cellspacing='1' id='table_comment'>
+        <tr>
+            <td>作者</td>
+            <td>评论</td>
+            <td>评论在</td>
+            <td>提交于</td>
+            <td>状态</td>
+            <td>操作</td>
+        </tr>
+        {{each result.records}}
+        <tr>
+            <td>{{$value.author.Nickname}}</td>
+            <td>{{$value.content}}</td>
+            <td>{{$value.article.title}}</td>
+            <td>{{$imports.dateformat($value.date)}}</td>
+            <td>{{$value.status === '0' ? "待审核" : "已审核"}}</td>
+            <td>
+                <a href="javascript:;" class="approval_comment" data-id="{{@$value._id}}" data-status="{{$value.status}}">{{$value.status === '0' ? '批准' : '驳回'}}</a><a href="javascript:;" class="delete_comment" data-id="{{@$value._id}}">删除</a>
             </td>
         </tr>
         {{/each}}
