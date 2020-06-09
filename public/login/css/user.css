@@ -46,6 +46,7 @@ nav .nav_list .nav_list_first{
 nav .nav_list_list i{
     float: right;padding: 2px 0 0;box-sizing: border-box;
 }
+.setting,
 .article{
     padding: 0 11px;max-height: 0px;overflow: hidden;opacity: 0;
 }
@@ -55,6 +56,10 @@ nav .nav_list_list i{
 .nav_list .hidden_nav_animation{
     animation: hidden_nav_article .3s ease forwards;
 }
+.article a{
+    font-size: 12px !important;transition: 0.3s;
+}
+.setting,
 .article a{
     font-size: 12px !important;transition: 0.3s;
 }
@@ -165,4 +170,277 @@ section .user_right{
 }
 .user_right .dispalyNone{
     display: none;
+}
+/* 评论 */
+.text_comment_all{
+    font-size: 26px;font-weight: 500;display: inline-block;margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.slide_comment{
+    height: 26px;font-size: 12px;
+}
+.slide{
+    border-radius: 4px;border: 1px solid rgb(192, 192, 192);
+    overflow: hidden;float: right;
+}
+.slide li{
+    padding: 0 10px;box-sizing: border-box;background-color: rgb(243, 243, 243);
+    height: 26px;line-height: 26px;border-right: 1px solid rgb(192, 192, 192);cursor: pointer;
+}
+.slide li:last-child{
+    border: none;
+}
+#table_comment{
+    width: 100%;text-align: left;margin-top: 10px;
+    background-color: rgb(192, 192, 192);box-sizing: border-box;
+}
+#table_comment tr{
+    font-size: 14px;font-weight: 400;height: 30px;box-sizing: border-box;
+    line-height: 30px;
+}
+#table_comment tr td{
+    padding: 0 10px;box-sizing: border-box;white-space: nowrap;
+    overflow: hidden;text-overflow: ellipsis;
+}
+#table_comment tr:nth-child(even){
+    background-color: rgb(224, 224, 224);
+}
+#table_comment tr:nth-child(odd){
+    background-color: rgb(238, 238, 238);
+}
+#table_comment .delete_comment,
+#table_comment .approval_comment{
+    padding: 2px 5px;border-radius: 4px;box-sizing: border-box;
+    background-color: rgb(196, 65, 65);color:#fff;margin-left: 3px;
+}
+#table_comment .approval_comment{
+    background-color: rgba(240, 128, 128, 0);background-color: rgb(30, 74, 110);
+    margin-right: 3px;margin-left:0;
+}
+#table_comment tr td:nth-child(2){
+    width: 40%;
+}
+#table_comment tr td:nth-child(3){
+    width: 30%;
+}
+#table_comment tr td:last-child{
+    text-align: center;font-size: 12px;
+}
+
+/* 主体-写文章 */
+.text_article_write{
+    font-size: 26px;font-weight: 500;
+}
+#form_article_write{
+    display: flex;align-items: top;font-size: 12px;
+}
+.left_form{
+    /* flex: 1; */width: 80%;box-sizing: border-box;padding: 10px;
+}
+#content_article,
+#title_article{
+    width: 100%;padding: 0 5px;box-sizing: border-box;
+    border-radius: 5px;border: 1px solid rgba(0, 0, 0, 0.123);
+    height: 30px;line-height: 30px;margin: 10px 0;
+}
+#content_article{
+    height: 300px;border-radius: 7px;
+}
+.right_form{
+    flex: 1;box-sizing: border-box;padding: 10px;
+}
+.box_form{
+    margin-bottom: 10px;
+}
+.right_form input,
+.right_form select{
+    width: 100%;margin-top: 8px;height: 28px;
+}
+.btn_article_write{
+    padding: 5px 10px;box-sizing: border-box;background-color: rgb(26, 67, 121);
+    color: #fff;border: none;cursor: pointer;outline: none;
+}
+
+/* 主体-所有文章 */
+.text_article_all{
+    font-size: 26px;font-weight: 500;display: inline-block;margin-right: 5px;
+    margin-bottom: 10px;
+}
+.write_article{
+    display: inline-block;padding: 2px 5px;border-radius: 3px;
+    background-color: rgb(20, 50, 105);color: #fff;font-size: 12px;
+}
+.slide,
+.screen_and_slide{
+    display: flex;justify-content: space-between;align-items: center;
+    height: 26px;font-size: 12px;
+}
+.screen{
+    display: flex;line-height:26px
+}
+.btn_screen{
+    padding: 0 5px;line-height: 26px;
+}
+.btn_screen,
+.screen select{
+    height: 26px;display: inline-block;border-radius: 4px;border: 1px solid rgb(192, 192, 192);
+    box-sizing: border-box;background-color: rgb(243, 243, 243);font-size: 12px;margin-right: 5px;
+}
+.slide{
+    border-radius: 4px;border: 1px solid rgb(192, 192, 192);
+    overflow: hidden;
+}
+.slide li{
+    padding: 0 10px;box-sizing: border-box;background-color: rgb(243, 243, 243);
+    height: 26px;line-height: 26px;border-right: 1px solid rgb(192, 192, 192);cursor: pointer;
+}
+.slide li:last-child{
+    border: none;
+}
+#table_article{
+    width: 100%;text-align: center;margin-top: 10px;
+    background-color: rgb(192, 192, 192);box-sizing: border-box;
+}
+#table_article tr td:first-child{
+    text-align: left;width:56%
+}
+
+#table_article tr{
+    font-size: 14px;font-weight: 400;height: 30px;box-sizing: border-box;
+    line-height: 30px;
+}
+#table_article tr td{
+    padding: 0 10px;box-sizing: border-box;overflow: hidden;
+    white-space: nowrap;text-overflow: ellipsis;
+}
+#table_article tr:nth-child(even){
+    background-color: rgb(224, 224, 224);
+}
+#table_article tr:nth-child(odd){
+    background-color: rgb(238, 238, 238);
+}
+#table_article .delete_article,
+#table_article .modify_article{
+    padding: 2px 5px;border-radius: 4px;box-sizing: border-box;font-size: 12px;
+    background-color: rgb(196, 65, 65);color:#fff;margin-left: 3px;
+}
+#table_article .modify_article{
+    background-color: rgba(240, 128, 128, 0);border: 1px solid rgb(180, 180, 180);
+    color: black;margin-right: 3px;margin-left:0
+}
+
+/* 图片轮播 */
+section .left_slides{
+    float: left;width: 35%;font-size: 12px;
+}
+section .right_slides{
+    float: right;width: 65%;
+}
+.left_slides .add_slides{
+    font-size: 16px;height: 25px;line-height: 25px;margin:5px 0 2px;
+}
+.title_slides{
+    font-size: 20px;font-weight: 500;
+}
+#image_slides,
+#text_slides,
+#a_slides{
+    width: 99%;height: 25px;line-height: 25px;border: 1px solid rgb(199, 199, 199);
+    box-sizing: border-box;background-color: #fff;border-radius: 3px;
+    padding: 0 5px;margin-left:1%;margin-top: 5px;
+}
+#add_directory_form{
+    font-size: 14px;
+}
+#add_slides_form .box_slides_form{
+    margin: 10px 0 ;
+}
+#add_slides_form .btn_add_slides{
+    padding: 5px 10px;background-color: rgb(78, 88, 114);border: none;
+    color: #fff;outline: none;cursor: pointer;
+}
+
+section .right_slides{
+    padding: 0 20px;box-sizing: border-box;
+}
+.right_slides table{
+    background-color: rgb(201, 201, 201);width: 100%;font-size: 12px;
+}
+.right_slides tr{
+    background-color: rgb(224, 224, 224);height: 70px;line-height: 70px;
+}
+.right_slides tr:first-child{
+    height: 40px;line-height: 40px;
+}
+.right_slides .title_table_slides{
+    background-color: rgb(228, 228, 228);
+}
+.right_slides td{
+    padding: 0 5px;box-sizing: border-box;overflow: hidden;height: inherit;
+}
+.right_slides tr td:last-child,
+.right_slides tr td:first-child{
+    text-align: center;
+}
+.right_slides .delete_slides{
+    background-color: rgb(243, 75, 45);padding:2px 4px;box-sizing: border-box;
+    color: #fff;border-radius: 3px;
+}
+
+.right_directory tr td:nth-child(2){
+    width:75%
+}
+.right_slides .slideii{
+    text-align: center;font-size: 12px;margin-top: 10px;
+}
+.right_slides .slideii li{
+    display: inline-block;padding: 2px 5px;box-sizing: border-box;cursor: pointer;
+    background-color: rgb(199, 199, 199);color: rgb(224, 224, 224);
+}
+.right_slides .slideii .select{
+    background-color: rgb(187, 187, 187);color: #fff;
+}
+.right_slides tr img{
+    width:150px;height: auto;vertical-align: center;
+}
+.right_slides tr td:first-child{
+    width: 200px;box-sizing: border-box;padding: 5px 0;
+}
+.right_slides tr div{
+    height: 60px;max-height: 60px;overflow: hidden;
+}
+
+
+/* 网站设置 */
+.title_setting{
+    font-size: 20px;font-weight: 500;
+}
+#form_setting{
+    margin-top: 50px;padding: 0 100px;box-sizing: border-box;
+}
+.box_form_setting{
+    margin-top:14px;font-size: 12px;display: flex;align-items: top;
+}
+.box_form_setting label{
+    width: 100px;text-align: right;margin-right: 12px;
+    font-size: 14px;
+}
+.box_form_setting input[type='text']{
+    width: 400px;height: 25px;border-radius: 3px;border: 1px solid rgba(0, 0, 0, 0.274);
+    box-sizing: border-box;padding:0 5px
+}
+.box_form_setting input[type='file']{
+    display:none;position: absolute;
+}
+.box_form_setting .icon_www{
+    max-width: 100px;max-height: 55px;overflow: hidden;position: relative;
+}
+.box_form_setting img{
+    max-width: 100px;vertical-align: center;
+}
+
+.box_form_setting .btn_setting{
+    padding: 4px 6px;display: inline-block;border-radius: 3px;background-color: rgb(26, 77, 107);
+    color: #fff;border: none;font-size: 12px;outline:none;cursor:pointer
 }

@@ -46,8 +46,9 @@ nav .nav_list .nav_list_first{
 nav .nav_list_list i{
     float: right;padding: 2px 0 0;box-sizing: border-box;
 }
+.setting,
 .article{
-    padding: 0 11px;max-height: 0px;overflow: hidden;opacity: 0;
+    padding: 0 11px;max-height: 0px;overflow: hidden;opacity: 0;font-size: 12px;
 }
 .nav_list .show_nav_animation{
     animation: show_nav_article .3s ease forwards;
@@ -55,11 +56,16 @@ nav .nav_list_list i{
 .nav_list .hidden_nav_animation{
     animation: hidden_nav_article .3s ease forwards;
 }
+.setting,
 .article a{
     font-size: 12px !important;transition: 0.3s;
 }
 .nav_list .color_select_article{
     color: #fff !important;
+}
+.setting .setting_www,
+.setting .setting_slides{
+    font-size: 12px !important;
 }
 
 /* 导航东效果 */
@@ -242,4 +248,119 @@ nav .nav_list_list i{
 }
 #table_comment tr td:last-child{
     text-align: center;font-size: 12px;
+}
+
+
+/* 图片轮播 */
+section .left_slides{
+    float: left;width: 35%;font-size: 12px;
+}
+section .right_slides{
+    float: right;width: 65%;
+}
+.left_slides .add_slides{
+    font-size: 16px;height: 25px;line-height: 25px;margin:5px 0 2px;
+}
+.title_slides{
+    font-size: 20px;font-weight: 500;
+}
+#image_slides,
+#text_slides,
+#a_slides{
+    width: 99%;height: 25px;line-height: 25px;border: 1px solid rgb(199, 199, 199);
+    box-sizing: border-box;background-color: #fff;border-radius: 3px;
+    padding: 0 5px;margin-left:1%;margin-top: 5px;
+}
+#add_directory_form{
+    font-size: 14px;
+}
+#add_slides_form .box_slides_form{
+    margin: 10px 0 ;
+}
+#add_slides_form .btn_add_slides{
+    padding: 5px 10px;background-color: rgb(78, 88, 114);border: none;
+    color: #fff;outline: none;cursor: pointer;
+}
+
+section .right_slides{
+    padding: 0 20px;box-sizing: border-box;
+}
+.right_slides table{
+    background-color: rgb(201, 201, 201);width: 100%;font-size: 12px;
+}
+.right_slides tr{
+    background-color: rgb(224, 224, 224);height: 70px;line-height: 70px;
+}
+.right_slides tr:first-child{
+    height: 40px;line-height: 40px;
+}
+.right_slides .title_table_slides{
+    background-color: rgb(228, 228, 228);
+}
+.right_slides td{
+    padding: 0 5px;box-sizing: border-box;overflow: hidden;height: inherit;
+}
+.right_slides tr td:last-child,
+.right_slides tr td:first-child{
+    text-align: center;
+}
+.right_slides .delete_slides{
+    background-color: rgb(243, 75, 45);padding:2px 4px;box-sizing: border-box;
+    color: #fff;border-radius: 3px;
+}
+
+.right_directory tr td:nth-child(2){
+    width:75%
+}
+.right_slides .slideii{
+    text-align: center;font-size: 12px;margin-top: 10px;
+}
+.right_slides .slideii li{
+    display: inline-block;padding: 2px 5px;box-sizing: border-box;cursor: pointer;
+    background-color: rgb(199, 199, 199);color: rgb(224, 224, 224);
+}
+.right_slides .slideii .select{
+    background-color: rgb(187, 187, 187);color: #fff;
+}
+.right_slides tr img{
+    width:150px;height: auto;vertical-align: center;
+}
+.right_slides tr td:first-child{
+    width: 200px;box-sizing: border-box;padding: 5px 0;
+}
+.right_slides tr div{
+    height: 60px;max-height: 60px;overflow: hidden;
+}
+
+/* 网站设置 */
+.title_setting{
+    font-size: 20px;font-weight: 500;
+}
+#form_setting{
+    margin-top: 50px;padding: 0 100px;box-sizing: border-box;
+}
+.box_form_setting{
+    margin-top:14px;font-size: 12px;display: flex;align-items: top;
+}
+.box_form_setting label{
+    width: 100px;text-align: right;margin-right: 12px;
+    font-size: 14px;
+}
+.box_form_setting input[type='text']{
+    width: 400px;height: 25px;border-radius: 3px;border: 1px solid rgba(0, 0, 0, 0.274);
+    box-sizing: border-box;padding:0 5px
+}
+.box_form_setting input[type='file']{
+    display:none;position: absolute;
+}
+.box_form_setting .icon_www{
+    max-width: 100px;max-height: 55px;overflow: hidden;position: relative;
+}
+.box_form_setting img{
+    max-width: 100px;vertical-align: center;
+}
+
+.box_form_setting .btn_setting{
+    padding: 4px 6px;display: inline-block;border-radius: 3px;background-color: rgb(26, 77, 107);
+    color: #fff;border: none;font-size: 12px;outline:none;cursor:pointer
 }

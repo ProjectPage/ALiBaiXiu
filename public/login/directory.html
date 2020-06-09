@@ -39,14 +39,20 @@
             <li class="nav_list_list list_nav_article select_nav">
                 <a href="javascript:;" class="iconfont icon-wenzhang color_select_article" id="nav_article"> 文章<i class="iconfont icon-xiajiantou"></i></a>
                 <ol class="article show_nav_animation">
-                    <li class="article_list"><a href="/admin/article">所有文章</a></li>
-                    <li class="article_list"><a href="/admin/article_write">写文章</a></li>
-                    <li class="article_list"><a href="/admin/directory" class="color_select_article">分类目录</a></li>
+                    <li class="article_list"><a href="javascript:;" id="title_article_all">所有文章</a></li>
+                    <li class="article_list"><a href="/admin/article_write" id="title_article_write">写文章</a></li>
+                    <li class="article_list"><a href="/admin/directory" class="color_select_article" id="title_directory">分类目录</a></li>
                 </ol>
             </li>            
-            <li class="nav_list_list"><a href="" class="iconfont icon-pinglun"> 评论</a></li>
+            <li class="nav_list_list"><a href="javascript:;" class="iconfont icon-pinglun" id="comment"> 评论</a></li>
             <li class="nav_list_list"><a href="/admin/user" class="iconfont icon-yonghu"> 用户</a></li>
-            <li class="nav_list_list"><a href="" class="iconfont icon-shezhi"> 设置<i class="iconfont icon-youjiantou"></i></a></li>
+            <li class="nav_list_list">
+                <a href="javascript:;" class="iconfont icon-shezhi" id="setting_nav"> 设置<i class="iconfont icon-youjiantou"></i></a>
+                <ol class="setting">
+                    <li class="setting_list"><a href="javascript:;" class="setting_slides" id="setting_slides">图片轮播</a></li>
+                    <li class="setting_list"><a href="javascript:;" class="setting_www" id="setting_www">网站设置</a></li>
+                </ol>
+            </li>
         </ul>
     </nav>
     <section>
@@ -77,7 +83,7 @@
                     <td>操作</td>
                 </tr>
             </table>
-            <div class="slide">
+            <div class="slideo">
                 <span>
                 </span>
             </div>
@@ -87,6 +93,7 @@
     <div class="portrait"><a href=""><img src="{{result.src_img}}" alt="头像"></a></div>
     <h5 class="username"><a href="">{{result.Nickname}}</a></h5>
 </script>
+<!-- 分类目录——添加 -->
 <script type="text/html" id="template_add_directory">
             <div class="box_directory_form">
                 <label for="name_directory">名称</label><br>
@@ -99,6 +106,7 @@
             <input type="hidden" name="id" value="{{@_id}}">
             <button class="btn_add_directory" type="button">修改</button>
 </script>
+<!-- 分类目录——列表 -->
 <script type="text/html" id="template_list_directory">
     {{each records}}
     <tr class="content_directory">
@@ -122,6 +130,249 @@
     {{if result.page < result.display[result.display.length - 1]}}
         <a href="javascript:;" data-href="{{result.page -0 + 1}}">下一页</a>
     {{/if}}
+</script>
+<!-- 文章列表 -->
+<script type="text/html" id="list_article">
+    <h5 class="text_article_all">所有文章</h5><a class="write_article" href='/admin/article_write'>写文章</a>
+    <div class="screen_and_slide">
+        <div class="screen">
+            <select id="directory">
+                <option value=''>请选择分类</option>
+                {{each result.directory}}
+                    <option value="{{$value.name_directory}}">{{$value.name_directory}}</option>
+                {{/each}}
+            </select>
+            <select id="status">
+                <option value="">状态</option>
+                <option value="0">草稿</option>
+                <option value="1">已发布</option>
+            </select>
+            <a href="javascript:;" class="btn_screen">筛选</a>            
+        </div>
+        <ul class="slide">
+            {{if result.page > 1}}
+                <li data-page="{{result.page - 1}}" class="page_change" data-select="0">上一页</li>
+            {{/if}}
+            {{if result.display.length === 0}}
+                <li data-page="1" class="page_change" data-select="{{0}}">1</li>
+            {{/if}}
+            {{each result.display}}
+                <li data-page="{{$value}}" class="page_change" data-select="0">{{$value}}</li>
+            {{/each}}
+            {{if result.page < result.display[result.display.length - 1]}}
+                <li data-page="{{result.page - 0 + 1}}" class="page_change" data-select="0">下一页</li>
+            {{/if}}
+        </ul>
+    </div>
+    <table border='0' cellspacing='1' id='table_article'>
+        <tr>
+            <td>标题</td>
+            <td>作者</td>
+            <td>分类</td>
+            <td>发表时间</td>
+            <td>状态</td>
+            <td>操作</td>
+        </tr>
+        {{each result.records}}
+        <tr>
+            <td>{{$value.title}}</td>
+            <td>{{$value.author.Nickname}}</td>
+            <td>{{$value.directory}}</td>
+            <td>{{$imports.dateformat($value.date)}}</td>
+            <td>{{$value.status === '0' ? "草稿" : "已发布"}}</td>
+            <td>
+                <a href="javascript:;" class="modify_article" data-id="{{@$value._id}}">编辑</a><a href="javascript:;" class="delete_article" data-id="{{@$value._id}}">删除</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</script>
+<!-- 写文章 -->
+<script type="text/html" id="section">
+    <h5 class="text_article_write">{{result ? "修改文章" : "写文章"}}</h5>
+    <form  id="form_article_write">
+        <div class="left_form">
+            <label for="title_article">标题</label><br>
+            <input type="text" name="title" id="title_article" placeholder="文章标题" value="{{result ? result.title : ''}}"><br>
+            <label for="content_article">内容</label><br>
+            <textarea name="content" id="content_article" cols="30" rows="10" placeholder="内容" >{{result ? result.content : ''}}</textarea><br>
+        </div>
+        <div class="right_form">
+            <div class="box_form">
+                <label for="cover_article ">文章封面</label><br>
+                <input type="file" name="cover" id="cover_article">
+            </div>
+            <div class="box_form">
+                <label for="directory_article">所属分类</label><br>
+                <select name="directory" id="directory_article">
+                    {{each directory}}
+                        <option value="{{$value.name_directory}}" {{result.directory === $value.name_directory ? 'selected' : ''}}>{{$value.name_directory}}</option>
+                    {{/each}}
+                </select>                    
+            </div>
+            <div class="box_form">
+                <label for="date_article">发布时间</label><br>
+                <input type="date" name="date" id="date_article">
+            </div>
+            <div class="box_form">
+                <label for="status_article">状态</label><br>
+                <select name="status" id="status_article">
+                    <option value="0" {{result ? (result.status === '0' ? 'selected' : '') : ''}}>草稿</option>
+                    <option value="1" {{result ? (result.status === '1' ? 'selected' : '') : ''}}>发布</option>
+                </select>
+            </div>
+            <div class="hidden">
+                <input type="hidden" name="id" value="{{@result ? result._id : ''}}" >
+            </div>
+            <button class="btn_article_write" type="button">{{result ? "修改" : "添加"}}</button>
+        </div>
+    </form>
+</script>
+<!-- 分类 -->
+<script type="text/html" id="template_directory">
+    <option value="">请选择分类</option>
+    {{each result}}
+        <option value="{{$value.name_directory}}">{{$value.name_directory}}</option>
+    {{/each}}
+</script>
+<!-- 作者信息 -->
+<script type="text/html" id="template_author">
+    <input type="hidden" name="author" value="{{@id._id}}" >
+</script>
+<!-- 评论列表 -->
+<script type="text/html" id="template_list_comment">
+    <h5 class="text_comment_all">所有文章</h5>
+    <div class="slide_comment">
+        <ul class="slide">
+            {{if result.page > 1}}
+                <li data-page="{{result.page - 1}}" class="page_change" data-select="1">上一页</li>
+            {{/if}}
+            {{if result.display.length === 0}}
+                <li data-page="1" class="page_change" data-select="1">1</li>
+            {{/if}}
+            {{each result.display}}
+                <li data-page="{{$value}}" class="page_change" data-select="1">{{$value}}</li>
+            {{/each}}
+            {{if result.page < result.display[result.display.length - 1]}}
+                <li data-page="{{result.page - 0 + 1}}" class="page_change" data-select="1">下一页</li>
+            {{/if}}
+        </ul>
+    </div>
+    <table border='0' cellspacing='1' id='table_comment'>
+        <tr>
+            <td>作者</td>
+            <td>评论</td>
+            <td>评论在</td>
+            <td>提交于</td>
+            <td>状态</td>
+            <td>操作</td>
+        </tr>
+        {{each result.records}}
+        <tr>
+            <td>{{$value.author.Nickname}}</td>
+            <td>{{$value.content}}</td>
+            <td>{{$value.article ? $value.article.title : '已删除'}}</td>
+            <td>{{$imports.dateformat($value.date)}}</td>
+            <td>{{$value.status === '0' ? "待审核" : "已审核"}}</td>
+            <td>
+                <a href="javascript:;" class="approval_comment" data-id="{{@$value._id}}" data-status="{{$value.status}}">{{$value.status === '0' ? '批准' : '驳回'}}</a><a href="javascript:;" class="delete_comment" data-id="{{@$value._id}}">删除</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</script>
+<!-- 图片轮播 -->
+<script type="text/html" id="template_slides">
+    <h5 class="title_slides">图片轮播</h5>
+    <div class="left_slides">
+        <div class="add_slides">添加新轮播内容</div>
+        <form id="add_slides_form">
+            <div class="box_slides_form">
+                <label for="image_slides">图片</label><br>
+                <input type="file" name="image" id="image_slides" placeholder="图片">
+            </div>
+            <div class="box_slides_form">
+                <label for="text_slides">文本</label><br>
+                <input type="text" name="text" id="text_slides" placeholder="文本"><br>
+            </div>
+            <div class="box_slides_form">
+                <label for="a_slides">链接</label><br>
+                <input type="text" name="a" id="a_slides" placeholder="链接"><br>
+            </div>
+            <input type="hidden" name="src_img" value="" class="src_img">
+            <button class="btn_add_slides" type="button">添加</button>
+        </form>
+    </div>
+    <div class="right_slides">
+        <table border="0" cellspacing="1" id="table_directory">
+            <tr class="title_table_slides">
+                <td>图片</td>
+                <td>文本</td>
+                <td>链接</td>
+                <td>操作</td>
+            </tr>
+            {{each result.records}}
+            <tr>
+                <td>
+                    <div>
+                        <img src='{{$value.src_img}}' alt='轮播图'>
+                    </div>
+                </td>
+                <td>{{$value.text}}</td>
+                <td>{{$value.a}}</td>
+                <td>
+                    <a href="javascript:;" class='delete_slides' data-id='{{@$value._id}}'>删除</a>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+        <div class="slideii">
+            <span>
+                {{if result.page > 1}}
+                <li data-page="{{result.page - 1}}" class="page_change" data-select="2">上一页</li>
+            {{/if}}
+            {{if result.display.length === 0}}
+                <li data-page="1" class="page_change" data-select="2">1</li>
+            {{/if}}
+            {{each result.display}}
+                <li data-page="{{$value}}" class="page_change {{$value === result.page ? 'select' : ''}}" data-select="2">{{$value}}</li>
+            {{/each}}
+            {{if result.page < result.display[result.display.length - 1]}}
+                <li data-page="{{result.page - 0 + 1}}" class="page_change" data-select="2">下一页</li>
+            {{/if}}
+            </span>
+        </div>
+    </div>
+</script>
+<!-- 网站设置 -->
+<script type="text/html" id="template_setting">
+    <h5 class='title_setting'>网站设置</h5>
+    <form id='form_setting'>
+        <div class="box_form_setting">
+            <label for="">网站图标</label>
+            <div class="icon_www">
+                <input type="file" name="ss" id="icon_www">
+                <img src="" alt="网站图标" class='img_icon'>
+            </div>            
+        </div>
+        <div class="box_form_setting">
+            <label for="">网站名称</label>
+            <input type="text" name="name" id="name_www">
+        </div>
+        <div class="box_form_setting">
+            <label for="">评论</label>
+            <div class="box_form_radio">
+                <input type="radio" name="comment" id=""> 开启评论功能<br>
+                <input type="radio" name="approval" id=""> 评论必须经人工批准<br>
+            </div>
+        </div>
+        <div class="box_form_setting">
+            <label for=""></label>
+            <button class='btn_setting' type='button'>保存设置</button>
+        </div>
+        <input type="hidden" name="icon" value='' class='icon'>
+
+    </form>
 </script>
 <script src="/common/js/template-web.js"></script>
 <script src="/common/js/Ajax.js"></script>

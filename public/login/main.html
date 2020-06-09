@@ -46,7 +46,13 @@
             </li>            
             <li class="nav_list_list"><a href="javascript:;" class="iconfont icon-pinglun" id="comment"> 评论</a></li>
             <li class="nav_list_list"><a href="/admin/user" class="iconfont icon-yonghu"> 用户</a></li>
-            <li class="nav_list_list"><a href="" class="iconfont icon-shezhi"> 设置<i class="iconfont icon-youjiantou"></i></a></li>
+            <li class="nav_list_list">
+                <a href="javascript:;" class="iconfont icon-shezhi" id="setting_nav"> 设置<i class="iconfont icon-youjiantou"></i></a>
+                <ol class="setting">
+                    <li class="setting_list"><a href="javascript:;" class="setting_slides" id="setting_slides">图片轮播</a></li>
+                    <li class="setting_list"><a href="javascript:;" class="setting_www" id="setting_www">网站设置</a></li>
+                </ol>
+            </li>
         </ul>
     </nav>
     <section>
@@ -194,7 +200,7 @@
         <tr>
             <td>{{$value.author.Nickname}}</td>
             <td>{{$value.content}}</td>
-            <td>{{$value.article.title}}</td>
+            <td>{{$value.article ? $value.article.title : '已删除'}}</td>
             <td>{{$imports.dateformat($value.date)}}</td>
             <td>{{$value.status === '0' ? "待审核" : "已审核"}}</td>
             <td>
@@ -204,7 +210,98 @@
         {{/each}}
     </table>
 </script>
+<!-- 图片轮播 -->
+<script type="text/html" id="template_slides">
+    <h5 class="title_slides">图片轮播</h5>
+    <div class="left_slides">
+        <div class="add_slides">添加新轮播内容</div>
+        <form id="add_slides_form">
+            <div class="box_slides_form">
+                <label for="image_slides">图片</label><br>
+                <input type="file" name="image" id="image_slides" placeholder="图片">
+            </div>
+            <div class="box_slides_form">
+                <label for="text_slides">文本</label><br>
+                <input type="text" name="text" id="text_slides" placeholder="文本"><br>
+            </div>
+            <div class="box_slides_form">
+                <label for="a_slides">链接</label><br>
+                <input type="text" name="a" id="a_slides" placeholder="链接"><br>
+            </div>
+            <input type="hidden" name="src_img" value="" class="src_img">
+            <button class="btn_add_slides" type="button">添加</button>
+        </form>
+    </div>
+    <div class="right_slides">
+        <table border="0" cellspacing="1" id="table_directory">
+            <tr class="title_table_slides">
+                <td>图片</td>
+                <td>文本</td>
+                <td>链接</td>
+                <td>操作</td>
+            </tr>
+            {{each result.records}}
+            <tr>
+                <td>
+                    <div>
+                        <img src='{{$value.src_img}}' alt='轮播图'>
+                    </div>
+                </td>
+                <td>{{$value.text}}</td>
+                <td>{{$value.a}}</td>
+                <td>
+                    <a href="javascript:;" class='delete_slides' data-id='{{@$value._id}}'>删除</a>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+        <div class="slideii">
+            <span>
+                {{if result.page > 1}}
+                <li data-page="{{result.page - 1}}" class="page_change" data-select="2">上一页</li>
+            {{/if}}
+            {{if result.display.length === 0}}
+                <li data-page="1" class="page_change" data-select="2">1</li>
+            {{/if}}
+            {{each result.display}}
+                <li data-page="{{$value}}" class="page_change {{$value === result.page ? 'select' : ''}}" data-select="2">{{$value}}</li>
+            {{/each}}
+            {{if result.page < result.display[result.display.length - 1]}}
+                <li data-page="{{result.page - 0 + 1}}" class="page_change" data-select="2">下一页</li>
+            {{/if}}
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="template_setting">
+    <h5 class='title_setting'>网站设置</h5>
+    <form id='form_setting'>
+        <div class="box_form_setting">
+            <label for="">网站图标</label>
+            <div class="icon_www">
+                <input type="file" name="ss" id="icon_www">
+                <img src="" alt="网站图标" class='img_icon'>
+            </div>            
+        </div>
+        <div class="box_form_setting">
+            <label for="">网站名称</label>
+            <input type="text" name="name" id="name_www">
+        </div>
+        <div class="box_form_setting">
+            <label for="">评论</label>
+            <div class="box_form_radio">
+                <input type="radio" name="comment" id=""> 开启评论功能<br>
+                <input type="radio" name="approval" id=""> 评论必须经人工批准<br>
+            </div>
+        </div>
+        <div class="box_form_setting">
+            <label for=""></label>
+            <button class='btn_setting' type='button'>保存设置</button>
+        </div>
+        <input type="hidden" name="icon" value='' class='icon'>
 
+    </form>
+</script>
 
 
 

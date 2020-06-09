@@ -6,7 +6,7 @@
     Ajax({
         url:'/admin/list_directory',
         success:function(result,xhr){
-            var slide = document.querySelector('.slide span');
+            var slide = document.querySelector('.slideo span');
             var tem_list = template('template_list_directory',{records:result.records});
             var tem_slide = template('template_slide',{result,});
             table_directory.innerHTML = dirHtml + tem_list;
@@ -210,7 +210,7 @@
                 url:'/admin/list_directory',
                 success:function(result,xhr){
                     var table_directory = document.querySelector('#table_directory');
-                    var slide = document.querySelector('.slide span');
+                    var slide = document.querySelector('.slideo span');
                     var tem_list = template('template_list_directory',{records:result.records});
                     var tem_slide = template('template_slide',{result,});
                     table_directory.innerHTML = dirHtml + tem_list;

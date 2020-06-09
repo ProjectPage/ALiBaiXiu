@@ -60,6 +60,13 @@ admin.get('/approval',require('./admin/approval_get'));
 admin.get('/comment_delete',require('./admin/comment_delete_get'));
 // 数据统计
 admin.get('/overview',require('./admin/overview_get'));
+// 添加轮播信息
+admin.post('/slides_add',require('./admin/slides_add_post'));
+// 轮播信息
+admin.get('/slides',require('./admin/slides_get'));
+// 设置信息
+admin.get('/setting',require('./admin/setting_get'));
+admin.post('/setting',require('./admin/setting_post'));
 module.exports = admin;
 
 
